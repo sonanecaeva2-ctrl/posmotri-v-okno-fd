@@ -19,7 +19,6 @@ html {
   padding: 133px 30px;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 h1,
@@ -41,6 +40,16 @@ ol {
   list-style: none;
 }
 
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 .content {
   display: flex;
   gap: 30px;
@@ -50,9 +59,11 @@ ol {
 }
 
 .result__video-container {
+  position: relative;
   margin-bottom: 16px;
   width: 711px;
   height: 386px;
+  cursor: pointer;
 }
 
 .result__video {
@@ -81,11 +92,12 @@ ol {
   gap: 5px;
   align-items: center;
   width: fit-content;
+  cursor: pointer;
 }
 
 .search-form__label:has(:focus-visible) {
   outline: 1px solid #fff;
-  outline-offset: 2px;
+  outline-offset: 1px;
 }
 
 .search-form__fieldset-title {
@@ -115,7 +127,7 @@ ol {
 
 .search-form__checkbox-list {
   display: flex;
-  gap: 39px;
+  gap: 15px;
 }
 
 .search-form__pseudo-checkbox {
@@ -128,12 +140,13 @@ ol {
 .search-form__pseudo-checkbox::after {
   content: "";
   display: block;
+  background-color: #fff;
   width: 100%;
   height: 100%;
   opacity: 0;
 }
 
-.search-form__checkbox:checked {
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
   opacity: 1;
 }
 
@@ -142,7 +155,47 @@ ol {
   text-decoration-skip-ink: none;
 }
 
+.button {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 700;
+  color: inherit;
+  background-color: transparent;
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+
+.search-form__submit-button {
+  width: 194px;
+  height: 34px;
+  align-self: flex-end;
+}
+
+.more-button {
+  width: 100%;
+  padding: 6px 0;
+}
+
+.button:hover {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+}
+
+.button:active {
+  background-color: #545050;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+}
+
 .content__list-container {
+  position: relative;
   height: 298px;
   overflow: auto;
   display: flex;
@@ -156,11 +209,11 @@ ol {
 }
 
 .title {
-  margin-bottom: 26px;
+  margin-bottom: 19px;
   font-family: "Oswald", sans-serif;
   font-weight: 700;
   font-size: 75px;
-  line-height: 94%;
+  line-height: 95%;
   text-transform: uppercase;
 }
 
@@ -180,8 +233,34 @@ ol {
 }
 
 .content__card-link {
+  display: block;
   color: #fff;
   text-decoration: none;
+}
+
+.content__list-item {
+  padding: 0 3px;
+}
+
+.content__card-link_current {
+  background-color: #545050;
+}
+
+.content__card-link:hover {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+}
+
+.content__card-link:active {
+  background-color: #545050;
+}
+
+.content__card-link:focus-visible {
+  outline: 1px solid #fff;
+}
+
+.content__list-item:focus {
+  outline: none;
 }
 
 .content__video-card-description-container {
@@ -213,16 +292,6 @@ ol {
   min-width: 194px;
   object-fit: cover;
   object-position: center;  
-}
-
-.visually-hidden {
-  position: absolute;
-  inline-size: 1px;
-  block-size: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  white-space: nowrap;
 }
 
 /* Кастомный скроллбар */
